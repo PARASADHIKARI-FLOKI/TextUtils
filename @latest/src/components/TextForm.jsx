@@ -2,103 +2,98 @@ import React, { useState } from "react";
 
 const TextForm = (props) => {
   const [text, setText] = useState("");
-  const [count, setCount] = useState(0);
+  const [mode, setMode] = useState("light"); 
 
   const handleOnchange = (e) => {
     setText(e.target.value);
   };
 
   const handleUpclick = () => {
-    let newtext = text.toUpperCase();
-    setText(newtext);
+    setText(text.toUpperCase());
   };
+
   const handleLowclick = () => {
-    let newtext = text.toLowerCase()
-    setText(newtext)
-  }
-  // const handleIncrease = () => {
-  //   setCount(count + 1);
-  // };
+    setText(text.toLowerCase());
+  };
 
-  // const handleDecrease = () => {
-  //   setCount(count - 1);
-  // };
-
-  // const handleReset = () => {
-  //   setCount(0);
-  // };
+  const toggleMode = () => {
+    setMode(mode === "light" ? "dark" : "light");
+  };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-2xl">
-
+    <div
+      className={`min-h-screen flex items-center justify-center p-6 ${
+        mode === "light" ? "bg-gray-100" : "bg-gray-900"
+      }`}
+    >
+      <div
+        className={`shadow-xl rounded-2xl p-8 w-full max-w-2xl ${
+          mode === "light" ? "bg-white text-gray-900" : "bg-gray-800 text-white"
+        }`}
+      >
         {/* Heading */}
-        <h1 className="text-3xl font-bold text-center mb-6 text-blue-600">
+        <h1
+          className={`text-3xl font-bold text-center mb-6 ${
+            mode === "light" ? "text-blue-600" : "text-yellow-400"
+          }`}
+        >
           {props.heading}
         </h1>
+
+        {/* Dark/Light Mode Toggle */}
+        <div className="flex justify-end mb-4">
+          <button
+            onClick={toggleMode}
+            className={`px-4 py-2 rounded-xl border ${
+              mode === "light"
+                ? "bg-gray-200 text-gray-800 hover:bg-gray-300"
+                : "bg-gray-700 text-white hover:bg-gray-600"
+            } transition duration-300`}
+          >
+            {mode === "light" ? "Dark Mode" : "Light Mode"}
+          </button>
+        </div>
 
         {/* Textarea Section */}
         <div className="mb-6">
           <textarea
             value={text}
             onChange={handleOnchange}
-            name="text"
-            id="text"
             rows="6"
-            className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className={`w-full p-4 border rounded-xl focus:outline-none focus:ring-2 ${
+              mode === "light"
+                ? "border-gray-300 focus:ring-blue-500 bg-white text-gray-900"
+                : "border-gray-600 focus:ring-yellow-400 bg-gray-700 text-white"
+            }`}
             placeholder="Enter your text here..."
           ></textarea>
-          <div>
-          <h1>Your Text Summary</h1>
-          <p>{text === "" ? 0 : text.split(" ").length} words and {text.length} characters</p>
-          <p>{0.008* text.split('').length} minutes read</p>
-          <h2>Preview</h2>
-          <p>{text}</p>
+
+          <div className="mt-4">
+            <h2 className="font-semibold mb-1">Your Text Summary</h2>
+            <p>
+              {text === "" ? 0 : text.split(" ").length} words and {text.length} characters
+            </p>
+            <p>{(0.008 * text.length).toFixed(2)} minutes read</p>
+
+            <h2 className="font-semibold mt-4 mb-1">Preview</h2>
+            <p>{text}</p>
           </div>
-          <button
-            onClick={handleUpclick}
-            className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-300"
-          >
-            Convert to Uppercase
-          </button>
-          <button
-            onClick={handleLowclick}
-            className="mt-4 ml-40 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-300"
-          >
-            Convert to LowerCase
-          </button>
+
+          <div className="flex gap-4 mt-4">
+            <button
+              onClick={handleUpclick}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-300"
+            >
+              Convert to Uppercase
+            </button>
+            <button
+              onClick={handleLowclick}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-300"
+            >
+              Convert to Lowercase
+            </button>
+          </div>
         </div>
-
-        {/* Counter Section */}
-        {/* <div className="bg-gray-50 p-6 rounded-xl shadow-inner text-center">
-          <p className="text-xl font-semibold mb-4">
-            Count: <span className="text-blue-600">{count}</span>
-          </p>
-
-          <div className="flex justify-center gap-4">
-            <button
-              onClick={handleIncrease}
-              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
-            >
-              Increase
-            </button>
-
-            <button
-              onClick={handleDecrease}
-              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
-            >
-              Decrease
-            </button>
-
-            <button
-              onClick={handleReset}
-              className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition"
-            >
-              Reset
-            </button>
-          </div>
-        </div> */}
-
       </div>
     </div>
   );
