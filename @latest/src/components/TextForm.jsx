@@ -7,6 +7,9 @@ const TextForm = (props) => {
   const handleOnchange = (e) => {
     setText(e.target.value);
   };
+    const handleCapitalizeClick = () =>
+    setText(text.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")
+    );
 
   const handleUpclick = () => {
     setText(text.toUpperCase());
@@ -91,6 +94,12 @@ const TextForm = (props) => {
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-300"
             >
               Convert to Lowercase
+            </button>
+            <button
+              onClick={handleCapitalizeClick}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl transition duration-300"
+            >
+              Capitalize Words
             </button>
           </div>
         </div>
