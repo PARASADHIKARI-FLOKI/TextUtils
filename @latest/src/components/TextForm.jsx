@@ -20,19 +20,25 @@ const TextForm = ({ heading, mode }) => {
       text
         .split(" ")
         .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(" ")
+        .join(" "),
     );
   };
 
+  const handleReverseClick = () => {
+    setText(text.split("").reverse().join(""));
+  };
+
   const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
+
+  const handleClean=()=>{
+    setText("")
+  }
 
   return (
     <div className="flex items-center justify-center p-6">
       <div
         className={`shadow-xl rounded-2xl p-8 w-full max-w-2xl ${
-          mode === "light"
-            ? "bg-white text-gray-900"
-            : "bg-gray-800 text-white"
+          mode === "light" ? "bg-white text-gray-900" : "bg-gray-800 text-white"
         }`}
       >
         <h1
@@ -75,6 +81,18 @@ const TextForm = ({ heading, mode }) => {
             className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-xl transition duration-300"
           >
             Capitalize
+          </button>
+          <button
+            onClick={handleReverseClick}
+            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl transition duration-300"
+          >
+            Reverse Text
+          </button>
+          <button
+            onClick={handleClean}
+            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl transition duration-300"
+          >
+           Clean Text
           </button>
         </div>
 
