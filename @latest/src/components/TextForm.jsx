@@ -30,9 +30,14 @@ const TextForm = ({ heading, mode }) => {
 
   const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
 
-  const handleClean=()=>{
-    setText("")
-  }
+  const handleSpeakClick = () => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(utterance);
+  };
+
+  const handleClean = () => {
+    setText("");
+  };
 
   return (
     <div className="flex items-center justify-center p-6">
@@ -89,10 +94,16 @@ const TextForm = ({ heading, mode }) => {
             Reverse Text
           </button>
           <button
+            onClick={handleSpeakClick}
+            className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-xl transition duration-300"
+          >
+            Speak Text
+          </button>
+          <button
             onClick={handleClean}
             className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl transition duration-300"
           >
-           Clean Text
+            Clean Text
           </button>
         </div>
 
