@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const Navbar = ({ mode, toggleMode }) => {
   return (
     <nav
       className={`p-4 flex justify-between items-center ${
         mode === "light"
-          ? "bg-blue-600 text-white"
+          ? "bg-blue-500 text-white"
           : "bg-gray-800 text-white"
       }`}
     >
@@ -22,11 +23,20 @@ const Navbar = ({ mode, toggleMode }) => {
         </Link>
       </div>
 
+      {/* Toggle Button with Icon */}
       <button
         onClick={toggleMode}
-        className="px-4 py-2 rounded bg-white text-black"
+        className="flex items-center gap-2 px-4 py-2 rounded cursor-pointer text-2xl hover:scale-105 transition "
       >
-        {mode === "light" ? "Dark Mode" : "Light Mode"}
+        {mode === "light" ? (
+          <>
+            <FaMoon /> 
+          </>
+        ) : (
+          <>
+            <FaSun className="text-yellow-300" /> 
+          </>
+        )}
       </button>
     </nav>
   );

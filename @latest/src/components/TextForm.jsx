@@ -69,39 +69,39 @@ const TextForm = ({ heading, mode }) => {
         <div className="flex flex-wrap gap-4 mt-4">
           <button
             onClick={handleUpclick}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-300"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-300 cursor-pointer"
           >
             Uppercase
           </button>
 
           <button
             onClick={handleLowclick}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-300"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition duration-300 cursor-pointer"
           >
             Lowercase
           </button>
 
           <button
             onClick={handleCapitalizeClick}
-            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-xl transition duration-300"
+            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-xl transition duration-300  cursor-pointer"
           >
             Capitalize
           </button>
           <button
             onClick={handleReverseClick}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl transition duration-300"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl transition duration-300  cursor-pointer"
           >
             Reverse Text
           </button>
           <button
             onClick={handleSpeakClick}
-            className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-xl transition duration-300"
+            className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-xl transition duration-300  cursor-pointer"
           >
             Speak Text
           </button>
           <button
             onClick={handleClean}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl transition duration-300"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl transition duration-300  cursor-pointer"
           >
             Clean Text
           </button>
